@@ -126,6 +126,8 @@ void parallel_gemm(
                 C, sendcounts, displs, MPI_DOUBLE,
                 0, comm);
 
+    MPI_Bcast(C, m * n, MPI_DOUBLE, 0, comm);
+
     free(B_local);
     free(C_local);
     if (rank != 0) free(A_full);

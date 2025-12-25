@@ -164,6 +164,8 @@ void parallel_gemm(
                C, m * n_local, MPI_DOUBLE,
                0, comm);
 
+    MPI_Bcast(C, m * n, MPI_DOUBLE, 0, comm);
+
     MPI_Type_free(&block_row_type);
     free(A_local);
     free(B_local);
