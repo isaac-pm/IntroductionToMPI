@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+module load toolchain/foss
+
 echo "Compiling helper objects..."
 gcc -c -O2 array.c -o array.o
 gcc -c -O2 multiply.c -o multiply.o
@@ -53,8 +55,8 @@ submit_job() {
 #SBATCH --time=00:05:00
 #SBATCH --mem=1G
 
-# Load modules if needed (uncomment and adjust)
-# module load gcc openmpi flexiblas
+# Load modules
+module load toolchain/foss
 
 echo "Running ${EXE}..."
 if [ "${TASKS}" -eq "1" ]; then
