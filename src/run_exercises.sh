@@ -52,8 +52,16 @@ submit_job() {
 #SBATCH --job-name=${EXE}
 #SBATCH --output=${OUTPUT}
 #SBATCH --ntasks=${TASKS}
+#SBATCH --nodes=1
 #SBATCH --time=00:05:00
-#SBATCH --mem=4G
+#SBATCH --mem=0
+EOT
+
+    if [ "${TASKS}" -gt 1 ]; then
+        echo "#SBATCH --exclusive" >> submit_${EXE}.sh
+    fi
+
+    cat <<EOT >> submit_${EXE}.sh
 
 # Load modules
 module load toolchain/foss
@@ -76,8 +84,8 @@ submit_job exercise_1_1 1
 submit_job exercise_1_2 1
 submit_job exercise_1_3 1
 
-# Submit MPI jobs (using 4 tasks)
-submit_job exercise_2_1 4
-submit_job exercise_2_2 4
+# Submit MPI jobs (using 128 tasks)
+submit_job exercise_2_1 128
+submit_job exercise_2_2 128
 
 echo "All jobs submitted. Check *.out files for results."

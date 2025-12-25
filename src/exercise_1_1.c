@@ -154,10 +154,15 @@ int main(int argc, char* argv[])
             printf("DAXPY failed for: n=%d\n", n);
             all_tests_pass = false;
         }
+        else {
+            printf("DAXPY passed for: n=%d\n", n);
+        }
         bool const test_DDOT_pass = test_DDOT(n, DDOT, epsilon, seed);
         if (!test_DDOT_pass) {
             printf("DDOT failed for: n=%d\n", n);
             all_tests_pass = false;
+        } else {
+            printf("DDOT passed for: n=%d\n", n);
         }
     }
 
