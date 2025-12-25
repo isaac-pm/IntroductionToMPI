@@ -211,6 +211,8 @@ int main(int argc, char* argv[])
         if (!test_pass) {
             printf("Multiplication failed for: m=%d, k=%d, n=%d\n", m, k, n);
             all_test_pass = false;
+        } else {
+            printf("Multiplication passed for: m=%d, k=%d, n=%d\n", m, k, n);
         }
     }
 
