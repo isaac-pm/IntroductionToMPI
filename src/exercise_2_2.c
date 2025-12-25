@@ -196,6 +196,8 @@ static bool generate_square_matrix_dimension(int* const m, int* const k, int* co
 
 int main(int argc, char* argv[])
 {
+    MPI_Init(&argc, &argv);
+
     bool all_test_pass = true;
 
     int m = 0;
@@ -209,6 +211,8 @@ int main(int argc, char* argv[])
             all_test_pass = false;
         }
     }
+
+    MPI_Finalize();
 
     if (!all_test_pass) {
         return EXIT_FAILURE;

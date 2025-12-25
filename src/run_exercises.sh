@@ -53,7 +53,7 @@ submit_job() {
 #SBATCH --output=${OUTPUT}
 #SBATCH --ntasks=${TASKS}
 #SBATCH --time=00:05:00
-#SBATCH --mem=1G
+#SBATCH --mem=4G
 
 # Load modules
 module load toolchain/foss
